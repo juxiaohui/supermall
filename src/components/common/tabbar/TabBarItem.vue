@@ -18,7 +18,7 @@ export default {
     }
   },
   data() {
-    return {};
+    return {}
   },
   computed: {
     isActive() {
@@ -28,7 +28,7 @@ export default {
       return this.isActive ? { color: this.activeColor } : {};
     }
   }
-};
+}
 </script>
 
 <style lang="less" scope>

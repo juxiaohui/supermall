@@ -1,18 +1,26 @@
 <template>
   <div id="app">
-    <main-tab-bar></main-tab-bar>
-    <router-view />
+    <!-- <main-tab-bar></main-tab-bar> -->
+
+    <transition mode="out-in">
+      <router-view />
+    </transition>
+
   </div>
 </template>
 
 <script>
-import MainTabBar from 'components/content/mainTabbar/MainTabbar'
 export default {
-  name: 'App',
+  name: "App",
+  data() {
+    return {
+
+    };
+  },
   components: {
-    MainTabBar
+
   }
-}
+};
 </script>
 
 <style lang="less">
