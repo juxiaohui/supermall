@@ -1,9 +1,9 @@
 <template>
   <div class="main-wrapper">
-    <transition mode="out-in">
+    <keep-alive>
       <router-view />
-    </transition>
-
+    </keep-alive>
+    
     <van-tabbar 
       v-model="active" 
       active-color="#ff8198" 

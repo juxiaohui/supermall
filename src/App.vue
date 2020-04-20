@@ -2,10 +2,12 @@
   <div id="app">
     <!-- <main-tab-bar></main-tab-bar> -->
 
-    <transition mode="out-in">
+    <!-- <transition mode="out-in"> -->
+    <keep-alive>
       <router-view />
-    </transition>
+    </keep-alive>
 
+    <!-- </transition> -->
   </div>
 </template>
 
@@ -13,13 +15,9 @@
 export default {
   name: "App",
   data() {
-    return {
-
-    };
+    return {};
   },
-  components: {
-
-  }
+  components: {}
 };
 </script>
 
