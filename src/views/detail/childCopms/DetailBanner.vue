@@ -2,13 +2,20 @@
   <!-- 轮播图 -->
   <van-swipe :autoplay="3000">
     <van-swipe-item v-for="(item, index) in banners" :key="index">
-      <img v-lazy="item.image" />
+      <!-- <img v-lazy="item" /> -->
+      <img class="image" lazy-load :src="item">
+      <!-- <van-image class="image" lazy-load :src="item">
+        <template v-slot:loading>
+          <img src="~assets/img/common/placeholder.png" alt />
+        </template>
+      </van-image> -->
     </van-swipe-item>
   </van-swipe>
 </template>
 
 <script>
-import { Swipe, SwipeItem } from "vant";
+import { Swipe, SwipeItem, Image } from "vant";
+
 export default {
   props: {
     banners: {
@@ -20,7 +27,8 @@ export default {
   },
   components: {
     [Swipe.name]: Swipe,
-    [SwipeItem.name]: SwipeItem
+    [SwipeItem.name]: SwipeItem,
+    [Image.name]: Image
   }
 };
 </script>
@@ -29,8 +37,7 @@ export default {
 .van-swipe {
   .van-swipe-item {
     width: 100%;
-    height: 3.9rem;
-    // height: 10rem;
+    height: 8rem;
     img {
       width: 100%;
       display: block;

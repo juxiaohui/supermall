@@ -22,6 +22,13 @@ export default {
   data() {
     return {
       scrollTop: 0,
+      // banners: [
+      //   {image: 'https://p3.pstatp.com/obj/7ac8000de933897548a6'},
+      //   {image: 'https://p1.pstatp.com/obj/7c1a0009ffa7f975e97f'},
+      //   {image: 'https://p3.pstatp.com/obj/7c5000148f4a9da21881'},
+      //   {image: 'https://p1.pstatp.com/obj/81e3000dbd46c8bd72f2'},
+      //   {image: 'https://p9.pstatp.com/obj/81f50001112dbffa0909'}
+      // ],
       banners: [],
       recommends: [],
       titles: [
@@ -74,7 +81,7 @@ export default {
   beforeRouteLeave(to, from, next) {
     let scrollTop =
       document.documentElement.scrollTop || document.body.scrollTop;
-    console.log(scrollTop);
+    // console.log(scrollTop);
     this.scrollTop = scrollTop;
     next();
   }

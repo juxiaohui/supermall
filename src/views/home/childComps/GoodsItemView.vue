@@ -1,8 +1,8 @@
 <template>
-  <div class="goods-item">
-    <van-image class="image" lazy-load :src="goodsItem.show.img">
+  <router-link class="goods-item" tag="div" :to="'/goodsDetail/' + (goodsItem.iid || goodsItem.shop_id)">
+    <van-image class="image" @load="imageLoad" lazy-load :src="goodsItem.image || goodsItem.img || goodsItem.show.img">
       <template v-slot:loading>
-        <img src="~assets/img/common/placeholder.png" alt="">
+        <img style="width:100%" src="~assets/img/common/placeholder.png" alt="">
       </template>
     </van-image>
     <!-- <img class="image" lazy-load :src="goodsItem.show.img" alt /> -->
@@ -14,7 +14,7 @@
         <span class="cfav">{{goodsItem.cfav}}</span>
       </div>
     </div>
-  </div>
+  </router-link>
 </template>
 
 <script>
@@ -32,7 +32,11 @@ export default {
   data() {
     return {};
   },
-  methods: {},
+  methods: {
+    imageLoad(){
+      this.$bus.$emit('goodsItemImageLoad')
+    }
+  },
   components: {
     [Image.name]: Image
   }
@@ -47,7 +51,6 @@ export default {
 
   .image {
     width: 100%;
-
     border-radius: 0.1rem;
   }
 

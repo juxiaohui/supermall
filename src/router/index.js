@@ -9,34 +9,38 @@ const Category = () => import('views/category/Category')
 const Cart = () => import('views/cart/Cart')
 const Profile = () => import('views/profile/Profile')
 
+const GoodsDetail = () => import('views/detail/Detail')
+const CategoryContent = () => import('views/category/childComps/CategoryContent')
+
+
+// const News = () => import('views/cart/childCopmps/News')
+// const Shop = () => import('views/cart/childCopmps/Shop')
+
 Vue.use(VueRouter)
 
 const routes = [
 
-  { path: '/', redirect: { name: 'main' } },
-
+  { path: '/', redirect: { name: 'home' } },
+  { path: '/home', name: 'home', component: Home, meta: { isNeedTabbar: true } },
   {
-    path: '/main',
-    name: 'main',
-    component: Main,
-    redirect: '/main/home',
+    path: '/category',
+    name: 'category',
+    component: Category,
+    meta: { isNeedTabbar: true },
     children: [
       {
-        path: 'home',
-        component: Home,
-
-      },
-      { path: 'category', component: Category },
-      { path: 'cart', component: Cart },
-      { path: 'profile', component: Profile }
+        path: 'subCategory/:maitKey/:miniWallkey',
+        component: CategoryContent,
+        meta: { isNeedTabbar: true },
+      }
     ]
   },
+  { path: '/cart', name: 'cart', component: Cart, meta: { isNeedTabbar: true }, },
+  { path: '/profile', name: 'profile', component: Profile, meta: { isNeedTabbar: true }, },
+  { path: '/goodsDetail/:id', component: GoodsDetail, meta: { isNeedTabbar: false }, }
+
   // { path: '/login', name: 'login', component: Login }
 
-  // {
-  //   path: '/',
-  //   redirect: '/home'
-  // },
   // {
   //   path: '/home',
   //   component: Home,
@@ -56,7 +60,7 @@ const routes = [
 ]
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: 'hash',
   base: process.env.BASE_URL,
   routes,
   // scrollBehavior(to, from, savedPosition) {
